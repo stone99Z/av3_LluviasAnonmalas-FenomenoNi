@@ -1,5 +1,38 @@
 import streamlit as st
+from PIL import Image
 
+image = Image.open('fenomeno_nino.jpg')
+st.image(image, caption='', use_column_width=True)
+
+st.title("Encuesta de Vulnerabilidad de Instituciones Educativas ante el Fenómeno del Niño")
+
+html_temp = """
+<div style="background-color:#26c5de;opacity: 0.80;padding:0.2 px">
+<h2 style="color:white;text-align:left;">Datos personales: </h2>
+</div>
+"""
+st.markdown(html_temp, unsafe_allow_html=True)
+
+st.write('**¿Cuál es tu edad?**')
+edad = st.slider(label="", min_value=1, max_value=100, value=18, step=1)
+
+st.write('**¿Cuál es tu género?**')
+genero = st.selectbox(label="", options=['Masculino', 'Femenino'], index=0)
+
+st.write('**¿En qué región vives?**')
+region = st.selectbox(label="", options=['Región 1', 'Región 2', 'Región 3'], index=0)
+
+st.write('**¿En qué distrito vives?**')
+distrito = st.selectbox(label="",
+                        options=['Distrito 1', 'Distrito 2', 'Distrito 3'],
+                        index=0)
+
+html_temp = """
+<div style="background-color:#26c5de;padding:0.2 px">
+<h2 style="color:white;text-align:left;">Evaluación de la vulnerabilidad de las instituciones educativas: </h2>
+</div>
+"""
+st.markdown(html_temp, unsafe_allow_html=True)
 st.title("Encuesta de Vulnerabilidad de Instituciones Educativas ante el Fenómeno del Niño")
 
 st.write('**¿La institución educativa cuenta con un plan de contingencia ante deslizamientos e inundaciones?**')
